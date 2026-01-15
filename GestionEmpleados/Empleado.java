@@ -1,4 +1,3 @@
-// Empleado.java
 public class Empleado extends Persona {
     protected double salarioBase;
     protected int antiguedadAnios;

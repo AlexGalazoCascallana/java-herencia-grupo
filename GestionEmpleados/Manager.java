@@ -1,4 +1,3 @@
-// Manager.java
 public class Manager extends Empleado {
     protected int personasACargo;
     
