@@ -1,28 +1,61 @@
-public class Persona{
-    private Sting DNI;
-    protected String Nombre;
-    protected int Edad;
+import java.time.LocalDate;
+import java.time.Period;
 
-    public Persona (Sting DNI, Sting Nombre, int Edad){
+public class Persona {
+    private String DNI;
+    protected String Nombre;
+    private LocalDate fechaNacimiento;
+    private String email;
+    private String telefono;
+
+    public Persona(String DNI, String Nombre, LocalDate fechaNacimiento, String email, String telefono) {
         this.DNI = DNI;
         this.Nombre = Nombre;
-        this.Edad = Edad;
+        this.fechaNacimiento = fechaNacimiento;
+        this.email = email;
+        this.telefono = telefono;
     }
 
-    public String getDNI(){
+    public String getDNI() {
         return DNI;
     }
 
-    public String getNombre(){
+    public String getNombre() {
         return Nombre;
     }
 
-    public int getEdad(){
-        return Edad;
-    }
-    
-    public String presentarse(){
-        return "Hola, mi nombre es " + Nombre + ", tengo " + Edad + " años y mi DNI es " + DNI + ".";
+    public String getEmail() {
+        return email;
     }
 
-}   
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    /**
+     * Calcula la edad basándose en la fecha de nacimiento y la fecha actual.
+     * @return int con los años cumplidos.
+     */
+    
+    public int calcularEdad() {
+        if (this.fechaNacimiento == null) {
+            return 0;
+        }
+        LocalDate fechaActual = LocalDate.now();
+        return Period.between(this.fechaNacimiento, fechaActual).getYears();
+    }
+
+    public int getEdad() {
+        return calcularEdad();
+    }
+
+    public String presentarse() {
+        return "Hola, mi nombre es " + Nombre + ", tengo " + calcularEdad() + 
+               " años, mi DNI es " + DNI + 
+               " y puedes contactarme en " + email + ".";
+    }
+}
