@@ -36,7 +36,6 @@ public class Main {
             System.out.print("DNI: "); String dni = sc.next();
             System.out.print("Nombre: "); String nombre = sc.next();
             System.out.print("Salario Base: "); double salario = leerDouble();
-            // Simplificado para el ejemplo: creamos empleado con datos fijos
             Empleado nuevo = new Empleado(dni, nombre, LocalDate.of(1990,1,1), "e@mail.com", "600", 
                                           "EMP-"+dni, LocalDate.now(), "General", 8.0, salario);
             empleados.put(dni, nuevo);
@@ -96,10 +95,10 @@ public class Main {
     }
 
     private static void menuInformes() {
-        System.out.println("\n5.1. Empleados por dep\n5.4. Proyectos activos");
+        System.out.println("\n5.1. Empleados por dep\n5.2. Proyectos activos");
         double subOp = leerDouble();
         if (subOp == 5.1) departamentos.values().forEach(d -> System.out.println(d.getNombre() + ": " + d.listarEmpleados()));
-        else if (subOp == 5.4) proyectos.forEach(System.out::println);
+        else if (subOp == 5.2) proyectos.forEach(System.out::println);
     }
 
     private static void imprimirMenuPrincipal() {
