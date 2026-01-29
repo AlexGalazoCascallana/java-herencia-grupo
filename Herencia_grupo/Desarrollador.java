@@ -1,25 +1,22 @@
-public class Desarrollador extends Empleado {   // Atributo privado
+public class Desarrollador extends Empleado {
     private String lenguajePrincipal;
     private String nivel;
     private List<String> tecnologias;
     private double horasExtras;
 
 
-    // Constructor completo
     public Desarrollador(String nombre, double salarioBase, String lenguajePrincipal, String nivel) {
-        super(nombre, salarioBase); // Llama al constructor de la clase padre Empleado
+        super(nombre, salarioBase);
         this.lenguajePrincipal = lenguajePrincipal;
         this.tecnologias = new Arraylist<>();
         this.horasExtras = 0.0;
 
     }
 
-    // Getter para lenguajePrincipal
     public String getLenguajePrincipal() {
         return lenguajePrincipal;
     }
 
-    // Setter para lenguajePrincipal
     public void setLenguajePrincipal(String lenguajePrincipal) {
         this.lenguajePrincipal = lenguajePrincipal;
     }
@@ -38,12 +35,10 @@ public class Desarrollador extends Empleado {   // Atributo privado
         }
     }
 
-    // Getter para tecnologías (lista inmutable para seguridad)
     public List<String> getTecnologias() {
         return Collections.unmodifiableList(tecnologias);
     }
 
-    // Método para añadir tecnologías
     public void agregarTecnologia(String tecnologia) {
         if (tecnologia != null && !tecnologia.trim().isEmpty()) {
             tecnologias.add(tecnologia.trim());
@@ -58,12 +53,10 @@ public class Desarrollador extends Empleado {   // Atributo privado
         }
     }
 
-    // Getter para horasExtra
     public double getHorasExtra() {
         return horasExtra;
     }
 
-    // Método para registrar horas extra
     public void registrarHoraExtra(double horas) {
         if (horas < 0) {
             throw new IllegalArgumentException("Las horas extra no pueden ser negativas");
@@ -71,15 +64,12 @@ public class Desarrollador extends Empleado {   // Atributo privado
         this.horasExtra += horas;
     }
 
-    // Sobrescritura del método calcularSalario()
     @Override
     public double calcularSalario() {
         double salarioBase = getSalarioBase();
 
-        // Bono por especialización técnica (10%)
         double salarioConBonoEspecializacion = salarioBase * 1.10;
 
-        // Plus por nivel
         double plusNivel = 0.0;
         switch (nivel.toLowerCase()) {
             case "mid":
@@ -88,16 +78,12 @@ public class Desarrollador extends Empleado {   // Atributo privado
             case "senior":
                 plusNivel = salarioBase * 0.30;
                 break;
-            // Junior: +0%, así que no se hace nada
         }
-
-        // Pago por horas extra: 20€/hora
         double pagoHorasExtra = horasExtra * 20.0;
 
         return salarioConBonoEspecializacion + plusNivel + pagoHorasExtra;
     }
 
-    // Opcional: toString para depuración o visualización
     @Override
     public String toString() {
         return "Desarrollador{" +
