@@ -7,15 +7,63 @@ public class Empleado extends Persona {
     private String departamento;
     private double jornadaHoraria;
     private boolean activo;
-    
-    protected double salarioBase;
+    private double salario;
+    private double salarioBase;
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    public String getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
+    }
+
+    public LocalDate getFechaContratacion() {
+        return fechaContratacion;
+    }
+
+    public void setFechaContratacion(LocalDate fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    public String getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public double getJornadaHoraria() {
+        return jornadaHoraria;
+    }
+
+    public void setJornadaHoraria(double jornadaHoraria) {
+        this.jornadaHoraria = jornadaHoraria;
+    }
+
+    public double getSalarioBase() {
+        return salarioBase;
+    }
+
+    public void setSalarioBase(double salarioBase) {
+        this.salarioBase = salarioBase;
+    }
 
     public Empleado(String DNI, String Nombre, LocalDate fechaNacimiento, String email, String telefono,
-                    String idEmpleado, LocalDate fechaContratacion, String departamento, 
+                    String idEmpleado, LocalDate fechaContratacion, String departamento,
                     double jornadaHoraria, double salarioBase) {
         
         super(DNI, Nombre, fechaNacimiento, email, telefono);
-        
+        this.Nombre = Nombre;
         this.idEmpleado = idEmpleado;
         this.fechaContratacion = fechaContratacion;
         this.departamento = departamento;
@@ -41,12 +89,7 @@ public class Empleado extends Persona {
         return salarioBase + (salarioBase * 0.03 * años);
     }
 
-    public String getIdEmpleado() { return idEmpleado; }
-    public String getDepartamento() { return departamento; }
-    public void setDepartamento(String departamento) { this.departamento = departamento; }
-    public boolean isActivo() { return activo; }
-    public void setActivo(boolean activo) { this.activo = activo; }
-    public double getJornadaHoraria() { return jornadaHoraria; }
+
 
     @Override
     public String toString() {

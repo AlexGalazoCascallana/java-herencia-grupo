@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Departamento {
     private String nombre;
@@ -27,10 +28,10 @@ public class Departamento {
      * Calcula la suma de todos los salarios de los empleados del departamento.
      * Requiere un Gestor de Empleados para obtener los objetos Empleado por su ID.
      */
-    public double calcularNominaDepartamento(GestorEmpleados gestor) {
+    public double calcularNominaDepartamento(Map<String, Empleado> todosLosEmpleados) {
         double nominaTotal = 0;
         for (String id : empleados) {
-            Empleado emp = gestor.obtenerEmpleado(id);
+            Empleado emp = todosLosEmpleados.get(id);
             if (emp != null) {
                 nominaTotal += emp.calcularSalario();
             }

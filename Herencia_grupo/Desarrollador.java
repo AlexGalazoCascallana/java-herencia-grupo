@@ -1,16 +1,26 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Desarrollador extends Empleado {
     private String lenguajePrincipal;
     private String nivel;
-    private List<String> tecnologias;
-    private double horasExtras;
+    private ArrayList<String> tecnologias;
+    public double horasExtras;
 
 
-    public Desarrollador(String nombre, double salarioBase, String lenguajePrincipal, String nivel) {
-        super(nombre, salarioBase);
+    public Desarrollador(String DNI, String Nombre, LocalDate fechaNacimiento, String email, String telefono,
+                         String idEmpleado, LocalDate fechaContratacion, String departamento,
+                         double jornadaHoraria, double salarioBase, String lenguajePrincipal, String nivel) {
+
+        super(DNI, Nombre, fechaNacimiento, email, telefono, idEmpleado,
+                fechaContratacion, departamento, jornadaHoraria, salarioBase);
+
         this.lenguajePrincipal = lenguajePrincipal;
-        this.tecnologias = new Arraylist<>();
+        this.tecnologias = new ArrayList<>();
         this.horasExtras = 0.0;
-
+        this.nivel = nivel;
     }
 
     public String getLenguajePrincipal() {
@@ -54,14 +64,14 @@ public class Desarrollador extends Empleado {
     }
 
     public double getHorasExtra() {
-        return horasExtra;
+        return horasExtras;
     }
 
     public void registrarHoraExtra(double horas) {
         if (horas < 0) {
             throw new IllegalArgumentException("Las horas extra no pueden ser negativas");
         }
-        this.horasExtra += horas;
+        this.horasExtras += horas;
     }
 
     @Override
@@ -79,7 +89,7 @@ public class Desarrollador extends Empleado {
                 plusNivel = salarioBase * 0.30;
                 break;
         }
-        double pagoHorasExtra = horasExtra * 20.0;
+        double pagoHorasExtra = horasExtras * 20.0;
 
         return salarioConBonoEspecializacion + plusNivel + pagoHorasExtra;
     }
@@ -92,7 +102,7 @@ public class Desarrollador extends Empleado {
                 ", lenguajePrincipal='" + lenguajePrincipal + '\'' +
                 ", nivel='" + nivel + '\'' +
                 ", tecnologias=" + tecnologias +
-                ", horasExtra=" + horasExtra +
+                ", horasExtra=" + horasExtras +
                 ", salarioCalculado=" + calcularSalario() +
                 '}';
     }
